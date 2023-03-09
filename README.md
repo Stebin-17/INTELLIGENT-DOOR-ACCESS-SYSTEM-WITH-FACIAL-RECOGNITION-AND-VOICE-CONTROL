@@ -80,13 +80,24 @@ The last part of this project is the servo motor Micro Servo Motor SG90 attached
 
 The section aims to kickoff the workflow of the project by using the ARDUCAM MINI 2MP PLUS camera to capture the image of a person when the doorbell button is pressed. A dedicated Flask server runs continuously and receives the image from the camera, which is then processed using the OpenCV deep face library to identify the person's face. The identified face is cross-checked with a database, and if found, the server writes a JSON file with the time, picture, and identified name to an HTML file. If the face is not in the database, the server sends a "stranger" message to the HTML file. This project can be a useful tool for enhancing home security by identifying the people at the door and alerting homeowners of any unauthorized visitors.
 
-** WORKFLOW OF THIS PART:**
+**WORKFLOW OF THIS PART:**
 
-![FLASK_SERVOR_WORKFLOW](https://user-images.githubusercontent.com/114398468/223940861-8fda8665-0d02-4add-89cf-510272e7998d.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114398468/223940861-8fda8665-0d02-4add-89cf-510272e7998d.png" />
+</p>
+
+- The ARDUCAM MINI 2MP PLUS camera is connected to the Raspberry Pi, and the Flask server is started on the Pi.
+- When the doorbell button is pressed, the camera captures an image of the person at the door.
+- The captured image is sent to the Flask server.
+- The Flask server receives the image and uses the OpenCV deep face library to identify the person's face.
+- The identified face is cross-checked with a database of known faces to determine if the person is a known visitor or a stranger.
+- If the identified face is a known visitor, the server writes a JSON file with the time, picture, and identified name to an HTML file.
+- If the identified face is not in the database, the server sends a "stranger" message to the HTML file.
 
 **ArduCam Mini 2MP Plus - SPI Camera Module - Pin Definition**
 
-<img style="width:50rem" src="Files/AruduCam-Mini-2MP-Plus-SPI-Camera-Module-Pin.jpg" alt="AruduCam-Mini-2MP-Plus-SPI-Camera-Module">
+<img style="width:50rem" src="https://github.com/Stebin-17/Intelligent-Door-Access-System-with-Facial-Recognition-and-Voice-Control/blob/main/Door-Facial-System/Files/AruduCam-Mini-2MP-Plus-SPI-Camera-Module-Pin.jpg" alt="AruduCam-Mini-2MP-Plus-SPI-Camera-Module">
+
 
 ArduCam OV2640 Module requires CS, MOSI, MISO, SCLK pins for SPI connection, and SDA, SCL pins for I2C connection. This project modified the source code of ArduCam to use SPI1.
 
@@ -98,15 +109,46 @@ ArduCam OV2640 Module requires CS, MOSI, MISO, SCLK pins for SPI connection, and
 4. SCLK --> GPIO 10
 5. SDA --> GPIO 8
 6. SCL --> GPIO 9
+
 <h2>Getting Started</h2>
+
 <ol>
 	<li>Clone this repository.</li>
-	<li>Set up a Telegram bot and obtain its API token. Replace the BOT_TOKEN variable in main.py with your token.</li>
-	<li>Modify the names list in app.py with the names of the people you want to recognize.</li>
-	<li>Start the Flask server using python main.py.</li>
+	<li>Modify the names list in ```app.py``` with the names of the people you want to recognize.</li>
+	<li>Start the Flask server using python ```main.py```</li>
 	<li>Open your web browser and navigate to http://localhost:1066.</li>
 	<li>Upload an image of a person in front of the door to trigger face recognition.</li>
 </ol>
+
+<h2>Code Explaination</h2>
+
+> main.py
+
+This code is a Python script for a Flask server that implements a facial recognition system for enhancing home security. It receives an image captured by an ARDUCAM MINI 2MP PLUS camera module and processes it using the OpenCV deep face library to identify the person's face. The identified face is then cross-checked with a database, and if found, the server writes a JSON file with the time, picture, and identified name to an HTML file. If the face is not in the database, the server sends a "stranger" message to the HTML file.
+
+Here's a brief explanation of the code:
+
+- Importing the required modules: The code starts by importing the necessary modules such as os, time, Flask, request, redirect, flash, url_for, render_template, FlaskForm, FileField, UploadSet, json, and datetime.
+
+- Initializing the Flask app: The app object is created and initialized.
+
+- Defining the route for uploading an image: The upload route is defined using the @app.route decorator. The route accepts POST requests containing an image file and saves it in the 'static/img' directory.
+
+- Configuring the image upload settings: The Flask-Uploads module is used to configure the image upload settings. The 'photos' UploadSet is defined to store the image files.
+
+- Initializing global variables: 'count' and 'flag' are initialized as global variables. 'count' is used to generate the filename for the captured image, and 'flag' is used to indicate if a new image has been captured.
+
+- Defining the 'get_files' function: This function yields all the files in a given directory.
+
+- Initializing variables for face recognition: 'image_path' is initialized with the path to the directory containing the captured image. 'data' is a dictionary that stores the JSON data to be written to the HTML file.
+
+- Defining the 'face_recognition' function: This function takes a path to an image and performs face recognition using the DeepFace library. It returns the name of the recognized face.
+
+- Defining the 'func' function: This function runs in a separate thread and checks if a new image has been captured. If a new image has been captured, it performs face recognition and writes the JSON data to the HTML file.
+
+- Starting the 'func' thread: The 'func' thread is started using the threading module.
+
+- Starting the Flask app: The app is run on the host '0.0.0.0' and port '1066'.
 
 
 
