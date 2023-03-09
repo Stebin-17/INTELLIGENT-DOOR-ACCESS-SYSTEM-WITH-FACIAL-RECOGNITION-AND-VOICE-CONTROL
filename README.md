@@ -22,6 +22,8 @@
 
 **8. CONCLUSION**
 
+#
+
 ## **1. INTRODUCTION:**
 
 The "Intelligent Door Access System with Facial Recognition and Voice Control" is a project that aims to create a smart door system that can automatically recognize the face of a person and allow them access to a building or a room. The system is equipped with a camera that captures the face of a person when they ring the doorbell, and a facial recognition algorithm that identifies the person based on their unique facial features.In addition, the system is integrated with Alexa, a voice-controlled virtual assistant, which enables the user to interact with the system using voice commands. Through Alexa, the user can identify the person at the door and command the door to open or close, providing an added layer of security and convenience.
@@ -29,6 +31,8 @@ The "Intelligent Door Access System with Facial Recognition and Voice Control" i
 The first component is a camera, which is mounted near the doorbell or the entrance. The camera captures the face of the person standing at the door when they press the doorbell.The second component is a facial recognition algorithm, which is responsible for identifying the person based on their facial features. The algorithm uses a database of faces to match the face of the person at the door with the faces in the database. If the face matches, the door can be unlocked or opened automatically, granting the person access.The third component is Alexa, the voice-controlled virtual assistant. Alexa can be integrated with the system to enable the user to interact with the system using voice commands. For example, the user can ask Alexa to identify the person at the door and receive a response based on the facial recognition algorithm's analysis.
 
 Additionally, the user can also use Alexa to open or close the door. This feature provides an added layer of convenience and security, as the user can control the door without having to physically interact with it.Overall, the Intelligent Door Access System with Facial Recognition and Voice Control offers several benefits over traditional access control systems. It eliminates the need for keys or access cards, which can be lost or stolen, and provides a more secure means of entry. Additionally, the system is convenient and easy to use, as the user can control the door using their voice, and it can be integrated with other smart home devices for added functionality.
+
+#
 
 ## **2. HARDWARES USED:**
 
@@ -43,16 +47,23 @@ Additionally, the user can also use Alexa to open or close the door. This featur
 - [SERVO MOTOR](https://www.hackster.io/diyables/products/servo-motor-sg90-180-degree)
 - [DOOR LOCK](https://www.the-diy-life.com/arduino-based-rfid-door-lock-make-your-own/)
 
+#
+
 ## **3. SOFTWARE AND SERVICES USED:**
 
+- [openCV](https://opencv.org/)
+- [AURDINO IDE](https://www.arduino.cc/)
 - [AMAZON ALEXA SKILLS KIT](https://developer.amazon.com/en-US/alexa)
 - [FLASK-ASK](https://github.com/johnwheeler/flask-ask)
 - [MQTT SERVICE](https://mqtt.org/)
 - [NGROK](https://ngrok.com/)
-- [AURDINO IDE](https://www.arduino.cc/)
+
+#
 
 ## **4. PROGRAMMING LANGUAGES**
 - [C++](https://isocpp.org/)
 - [PYTHON](https://www.python.org/)
+
+#
 
 
