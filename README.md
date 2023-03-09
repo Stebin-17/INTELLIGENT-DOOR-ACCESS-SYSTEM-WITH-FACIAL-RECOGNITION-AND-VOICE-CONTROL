@@ -76,7 +76,7 @@ The last part of this project is the servo motor Micro Servo Motor SG90 attached
 
 ## **MAIN COMPONENTS:**
 
-**SMART DOOR WITH FACE RECOGNITION**
+**1. SMART DOOR WITH FACE RECOGNITION**
 
 The section aims to kickoff the workflow of the project by using the ARDUCAM MINI 2MP PLUS camera to capture the image of a person when the doorbell button is pressed. A dedicated Flask server runs continuously and receives the image from the camera, which is then processed using the OpenCV deep face library to identify the person's face. The identified face is cross-checked with a database, and if found, the server writes a JSON file with the time, picture, and identified name to an HTML file. If the face is not in the database, the server sends a "stranger" message to the HTML file. This project can be a useful tool for enhancing home security by identifying the people at the door and alerting homeowners of any unauthorized visitors.
 
@@ -152,6 +152,23 @@ Here's a brief explanation of the code:
 - Starting the 'func' thread: The 'func' thread is started using the threading module.
 
 - Starting the Flask app: The app is run on the host '0.0.0.0' and port '1066'.
+
+
+
+**2.ALEXA WITH CUSTOM SKILLS FOR RECOGNITION AND DOOR CONTROL**
+
+
+
+```
+STEPS:
+1. Create an Amzazon developer account. 
+2. Create the Alexa skill with the desired invocation name and make the necessary intent blocks.
+3. Make the raspberry pi ready.
+4. Setup ngrok server in the Raspberry pi 
+5. Setup the flask server for handling the alexa skills.
+6. Setup the alexa end point with the 'HTTPS' instead of AWS Lambda ARN
+7. Link the created skill with the AMAZON-ECHO-DOT
+```
 
 
 
