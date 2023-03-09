@@ -76,6 +76,42 @@ The last part of this project is the servo motor Micro Servo Motor SG90 attached
 
 ## **MAIN COMPONENTS:**
 
+**SMART DOOR WITH FACE RECOGNITION**
+
+The section aims to kickoff the workflow of the project by using the ARDUCAM MINI 2MP PLUS camera to capture the image of a person when the doorbell button is pressed. A dedicated Flask server runs continuously and receives the image from the camera, which is then processed using the OpenCV deep face library to identify the person's face. The identified face is cross-checked with a database, and if found, the server writes a JSON file with the time, picture, and identified name to an HTML file. If the face is not in the database, the server sends a "stranger" message to the HTML file. This project can be a useful tool for enhancing home security by identifying the people at the door and alerting homeowners of any unauthorized visitors.
+
+** WORKFLOW OF THIS PART:**
+
+![FLASK_SERVOR_WORKFLOW](https://user-images.githubusercontent.com/114398468/223940861-8fda8665-0d02-4add-89cf-510272e7998d.png)
+
+**ArduCam Mini 2MP Plus - SPI Camera Module - Pin Definition**
+
+<img style="width:50rem" src="Files/AruduCam-Mini-2MP-Plus-SPI-Camera-Module-Pin.jpg" alt="AruduCam-Mini-2MP-Plus-SPI-Camera-Module">
+
+ArduCam OV2640 Module requires CS, MOSI, MISO, SCLK pins for SPI connection, and SDA, SCL pins for I2C connection. This project modified the source code of ArduCam to use SPI1.
+
+**Pico pin configuration for ArduCam OV2640**
+
+1. CS --> GPIO 13
+2. MOSI --> GPIO 11
+3. MISO --> GPIO 12
+4. SCLK --> GPIO 10
+5. SDA --> GPIO 8
+6. SCL --> GPIO 9
+<h2>Getting Started</h2>
+<ol>
+	<li>Clone this repository.</li>
+	<li>Set up a Telegram bot and obtain its API token. Replace the BOT_TOKEN variable in main.py with your token.</li>
+	<li>Modify the names list in app.py with the names of the people you want to recognize.</li>
+	<li>Start the Flask server using python main.py.</li>
+	<li>Open your web browser and navigate to http://localhost:1066.</li>
+	<li>Upload an image of a person in front of the door to trigger face recognition.</li>
+</ol>
+
+
+
+
+
 
 
 
