@@ -66,4 +66,15 @@ Additionally, the user can also use Alexa to open or close the door. This featur
 
 #
 
+## **4. WORK FLOW:**
+
+The workflow of this project starts with a person pushing a button that is similar to a calling bell. An ARDUCAM MINI 2MP PLUS is attached to the button, which is running on the Flask server. When the button is pushed, it will click a snap of the person at the front and goes for face recognition using OpenCV. The face_recognition() function loads pre-encoded images of known faces from a specified directory using the SimpleFacerec library. Then it reads the specified image file and performs face recognition on the image using the loaded encoding images. The result from the face recognition is being published into an HTML post as a JSON file.
+
+The next phase is the Alexa phase. When the user is inside the house, he can ask Alexa who is at the door/who is there. Then, Alexa would reply with the name and time of the person visited to the user. If the face is not identified, it will say face not found to the user. If the user wants the person to be let in, he would command Alexa to open the door. This skill set is linked with Chat GPT, which would convert the statement from the user, and based on the sentence and polarity, the message is either mapped to open the door or close the door.The entire Alexa skill is supported by the Flask server running on a Raspberry Pi, and the ngrok functionalities are being used to ensure the visibility of the local host to the Alexa skill endpoint. The ngrok service is used to expose a local web server to the internet, which enables Alexa to communicate with the Flask server running on the Raspberry Pi.
+
+The last part of this project is the servo motor Micro Servo Motor SG90 attached to the door lock. The return message from the Chat GPT is sent via MQTT, and a Wiznet board attached to the motor and the door lock is there to capture the message from the MQTT topic and act according to the message. When the Chat GPT receives a command to open the door, it sends a message to the Wiznet board, which then activates the servo motor to unlock the door. When the Chat GPT receives a command to close the door, it sends a message to the Wiznet board, which then activates the servo motor to lock the door.
+In conclusion, this project provides a complete solution for secure access control to homes or buildings. The project's workflow is well thought out and detailed, ensuring that all components work together seamlessly to provide a reliable and efficient access control system.
+
+
+
 
