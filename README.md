@@ -14,9 +14,9 @@
 
 **6. MAIN COMPONENTS:**
       
-     **1: SMART DOOR WITH FACE RECOGNITION**
-     **2: AlEXA WITH CUSTOM SKILLS FOR RECOGNITION AND DOOR CONTROL**
-     **3: SERVO MOTOR FOR DOOR MOVEMENT**
+- **1: SMART DOOR WITH FACE RECOGNITION**
+- **2: AlEXA WITH CUSTOM SKILLS FOR RECOGNITION AND DOOR CONTROL**
+- **3: SERVO MOTOR FOR DOOR MOVEMENT**
 
 **7. OUTPUT**
 
@@ -117,8 +117,8 @@ The ArduCam provides document and source codes [SPI Camera for Raspberry Pi Pico
 
 <ol>
 	<li>Clone this repository.</li>
-	<li>Modify the names list in ```app.py``` with the names of the people you want to recognize.</li>
-	<li>Start the Flask server using python ```main.py```</li>
+	<li>Modify the names list in app.py with the names of the people you want to recognize.</li>
+	<li>Start the Flask server using python main.py </li>
 	<li>Open your web browser and navigate to http://localhost:1066.</li>
 	<li>Upload an image of a person in front of the door to trigger face recognition.</li>
 </ol>
