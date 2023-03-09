@@ -100,8 +100,7 @@ The section aims to kickoff the workflow of the project by using the ARDUCAM MIN
   <img src="https://github.com/Stebin-17/Intelligent-Door-Access-System-with-Facial-Recognition-and-Voice-Control/blob/main/Door-Facial-System/Files/AruduCam-Mini-2MP-Plus-SPI-Camera-Module-Pin.jpg" width="75%" />
 </p>
 
-
-ArduCam OV2640 Module requires CS, MOSI, MISO, SCLK pins for SPI connection, and SDA, SCL pins for I2C connection. This project modified the source code of ArduCam to use SPI1.
+The ArduCam provides document and source codes [SPI Camera for Raspberry Pi Pico](https://www.arducam.com/docs/pico/arducam-camera-module-for-raspberry-pi-pico/spi-camera-for-raspberry-pi-pico) and it also uses SPI0. To avoid the confliction, this project uses SPI1 for the ArduCam OV2640 Module.ArduCam OV2640 Module requires CS, MOSI, MISO, SCLK pins for SPI connection, and SDA, SCL pins for I2C connection. This project modified the source code of ArduCam to use SPI1.
 
 **Pico pin configuration for ArduCam OV2640**
 
