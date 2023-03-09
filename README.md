@@ -83,7 +83,7 @@ The section aims to kickoff the workflow of the project by using the ARDUCAM MIN
 **WORKFLOW OF THIS PART:**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/114398468/223940861-8fda8665-0d02-4add-89cf-510272e7998d.png" />
+  <img src="https://user-images.githubusercontent.com/114398468/223940861-8fda8665-0d02-4add-89cf-510272e7998d.png" width="75%" />
 </p>
 
 - The ARDUCAM MINI 2MP PLUS camera is connected to the Raspberry Pi, and the Flask server is started on the Pi.
@@ -96,19 +96,23 @@ The section aims to kickoff the workflow of the project by using the ARDUCAM MIN
 
 **ArduCam Mini 2MP Plus - SPI Camera Module - Pin Definition**
 
-<img style="width:50rem" src="https://github.com/Stebin-17/Intelligent-Door-Access-System-with-Facial-Recognition-and-Voice-Control/blob/main/Door-Facial-System/Files/AruduCam-Mini-2MP-Plus-SPI-Camera-Module-Pin.jpg" alt="AruduCam-Mini-2MP-Plus-SPI-Camera-Module">
+<p align="center">
+  <img src="https://github.com/Stebin-17/Intelligent-Door-Access-System-with-Facial-Recognition-and-Voice-Control/blob/main/Door-Facial-System/Files/AruduCam-Mini-2MP-Plus-SPI-Camera-Module-Pin.jpg" width="75%" />
+</p>
 
 
 ArduCam OV2640 Module requires CS, MOSI, MISO, SCLK pins for SPI connection, and SDA, SCL pins for I2C connection. This project modified the source code of ArduCam to use SPI1.
 
 **Pico pin configuration for ArduCam OV2640**
 
-1. CS --> GPIO 13
+```
+1. CS   --> GPIO 13
 2. MOSI --> GPIO 11
 3. MISO --> GPIO 12
 4. SCLK --> GPIO 10
-5. SDA --> GPIO 8
-6. SCL --> GPIO 9
+5. SDA  --> GPIO 8
+6. SCL  --> GPIO 9
+```
 
 <h2>Getting Started</h2>
 
