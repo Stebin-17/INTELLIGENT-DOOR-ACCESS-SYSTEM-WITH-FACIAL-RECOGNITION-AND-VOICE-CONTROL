@@ -35,7 +35,6 @@ Additionally, the user can also use Alexa to open or close the door. This featur
 - [RASPBERRY PI 4 MODEL B](https://www.hackster.io/raspberry-pi/products/raspberry-pi-4-model-b)
 - [W5100S-EVB-PICO](https://www.hackster.io/wiznet/products/w5100s-evb-pico1)
 - [JUMPER WIRES](https://www.hackster.io/diyables/products/jumper-wires)
-- [LED](https://www.hackster.io/search?q=led&i=parts)
 - [AMAZON ECHO-DOT](https://www.hackster.io/amazon-alexa/products/echo-dot)
 - [LED DOT-MATRIX](https://www.hackster.io/diyables/products/led-matrix-4-in-1-32x8)
 - [ARDUCAM MINI 2MP PLUS](https://www.arducam.com/product/arducam-2mp-spi-camera-b0067-arduino/)
