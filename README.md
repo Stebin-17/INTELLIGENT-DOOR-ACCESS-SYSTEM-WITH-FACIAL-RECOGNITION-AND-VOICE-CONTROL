@@ -334,8 +334,11 @@ I have tested the below given utterances for opening and closing and it was work
 
 The command from the alexa is send via MQTT protocol and it is received at the other end by a WIZNET-EVB-PICO boaed which has an servo motor attached too it. Based on the motion of the servo motor the door lock is locked and opened.
 
+#
 
 **3: SERVO MOTOR FOR DOOR MOVEMENT**
+
+#
 
 To control a servo motor with an MQTT server using the Wiznet 5100 Ethernet module, you will need to write a program that subscribes to an MQTT topic and listens for incoming messages that contain servo motor control commands.
 
@@ -389,12 +392,12 @@ void setup()
 
 # Circuit Diagram
 
-![image](https://user-images.githubusercontent.com/111410933/221853283-9815608e-8aa9-4570-99ed-f0f328c79bd7.png)
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/111410933/221853283-9815608e-8aa9-4570-99ed-f0f328c79bd7.png" width="75%" />
+</p>
 
-To connect the servo motor to the Wiznet W5100, you will need to connect the wire (usually orange or yellow) of the servo motor to one of the PWM pins on the W5100. You will also need to connect the ground wire (usually brown or black) of the servo motor to the ground pin on the W5100.
-
-You can then use a suitable library or code to control the servo motor using the PWM pin. The exact code or library you use will depend on your specific microcontroller or development board, as well as the programming language you are using.
+To connect the servo motor to the Wiznet W5100, you will need to connect the wire (usually orange or yellow) of the servo motor to one of the PWM pins on the W5100. You will also need to connect the ground wire (usually brown or black) of the servo motor to the ground pin on the W5100. You can then use a suitable library or code to control the servo motor using the PWM pin. The exact code or library you use will depend on your specific microcontroller or development board, as well as the programming language you are using.
 
 
 
