@@ -337,6 +337,65 @@ The command from the alexa is send via MQTT protocol and it is received at the o
 
 **3: SERVO MOTOR FOR DOOR MOVEMENT**
 
+To control a servo motor with an MQTT server using the Wiznet 5100 Ethernet module, you will need to write a program that subscribes to an MQTT topic and listens for incoming messages that contain servo motor control commands.
+
+1)  Include the Servo library in your code and create a Servo object.
+
+```
+#include <Servo.h>
+
+Servo myservo;  // create servo object
+```
+In the MQTT message callback function, parse the incoming message and use it to control the servo motor. For example, you could define a message format that specifies the servo angle in degrees, such as "servo/angle/set". When a message is received on this topic, you can extract the angle value from the payload and set the servo motor to that angle.
+
+```
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  char incomingMessage[length + 1];
+  for (int i = 0; i < length; i++) {
+    incomingMessage[i] = (char)payload[i];
+  }
+  incomingMessage[length] = '\0';
+
+  Serial.println(incomingMessage);
+
+if(incomingMessage == "OPEN THE DOOR"){
+  myservo.write(0); // Rotate the servo to 0 degrees
+  delay(1000); // Wait for 1 second
+}
+if(incomingMessage == "CLOSE THE DOOR")
+  myservo.write(180); // Rotate the servo to 0 degrees
+  delay(1000); // Wait for 1 second
+}
+```
+3) In the setup() function, attach the servo object to the appropriate GPIO pin.
+
+```
+void setup()
+{
+  myservo.attach(9);
+  Ethernet.init(17);  // WIZnet W5100S-EVB-Pico W5500-EVB-Pico W6100-EVB-Pico
+  
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+  
+```
+4) The servo motor may require additional power beyond what the Wiznet 5100 Ethernet module can provide, so be sure to power the servo motor separately if necessary. Also, make sure to test your program thoroughly to ensure that it responds correctly to incoming MQTT messages and controls the servo motor as expected.
+
+
+# Circuit Diagram
+
+![image](https://user-images.githubusercontent.com/111410933/221853283-9815608e-8aa9-4570-99ed-f0f328c79bd7.png)
+
+
+To connect the servo motor to the Wiznet W5100, you will need to connect the wire (usually orange or yellow) of the servo motor to one of the PWM pins on the W5100. You will also need to connect the ground wire (usually brown or black) of the servo motor to the ground pin on the W5100.
+
+You can then use a suitable library or code to control the servo motor using the PWM pin. The exact code or library you use will depend on your specific microcontroller or development board, as well as the programming language you are using.
+
 
 
 
