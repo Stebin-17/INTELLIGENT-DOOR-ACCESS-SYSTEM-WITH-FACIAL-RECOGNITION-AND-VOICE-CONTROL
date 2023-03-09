@@ -157,8 +157,6 @@ Here's a brief explanation of the code:
 
 **2.ALEXA WITH CUSTOM SKILLS FOR RECOGNITION AND DOOR CONTROL**
 
-
-
 ```
 STEPS:
 1. Create an Amzazon developer account. 
@@ -168,7 +166,55 @@ STEPS:
 5. Setup the flask server for handling the alexa skills.
 6. Setup the alexa end point with the 'HTTPS' instead of AWS Lambda ARN
 7. Link the created skill with the AMAZON-ECHO-DOT
+8. Sample Utterences for opening and closing the door
 ```
+
+Explanation of the code:
+
+> FLASK_SERVER_ALEXA.py
+
+- Importing the necessary libraries and modules:
+
+	- ```logging```: for logging messages from the Flask-Ask module.
+	- ```os```: for interacting with the operating system.
+	- ```paho.mqtt.client```: for implementing the MQTT protocol.
+	- ```Flask```: for creating a Flask application.
+	- ```Flask-Ask```: for creating Alexa skills and handling voice commands.
+	- ```openai```: for using OpenAI's GPT models for natural language processing.
+	- ```json, urllib.request, requests```: for reading data from JSON files and URLs.
+	- ```datetime```: for handling timestamps and converting them to human-readable formats.
+- Creating a Flask application and an Ask object:
+
+	- The ```app``` object is an instance of the Flask class.
+	- The ```ask``` object is an instance of the Ask class and is associated with the app object.
+	- The ```logging``` level is set to DEBUG for the Flask-Ask module.
+	- 
+- Defining Alexa intents:
+
+	- The ```@ask.intent``` decorator is used to define the facerecognition and dooropen intents.
+	- The ```mapping``` parameter is used to map the slot variables in the dooropen intent to more meaningful names.
+	- The ```@ask.launch```, ```@ask.intent('AMAZON.HelpIntent')```, ```@ask.intent('AMAZON.StopIntent')```, and ```@ask.session_ended``` decorators are used to define additional Alexa intents.
+	
+- Implementing the facerecognition intent:
+
+	- The intent reads a JSON file from a URL that contains the name of the person at the door and a timestamp.
+	- The timestamp is converted to a human-readable format using the datetime module.
+	- The intent returns a statement that tells the user who is at the door and the time.
+- Implementing the dooropen intent:
+
+	- The intent reads the user's voice command and decides whether to open or close the door.
+	- If the user gives explicit permission to let someone in, the intent opens the door using the MQTT protocol.
+	- If the user says the person at the door is harmful, the intent closes the door.
+	- If the user gives a vague command, the intent uses OpenAI's GPT models to decide whether to open or close the door.
+	- The response from GPT is then used to decide whether to open or close the door.
+- Implementing the stop_chatgpt intent:
+
+	- The intent is triggered when the user says "no" in response to a question from the dooropen intent.
+	- The intent returns a statement that the ChatGPT skill is exiting.
+- Implementing the launch, help, stop, and session_ended intents:
+
+	- These intents are defined using the ```@ask.launch```, ```@ask.intent('AMAZON.HelpIntent')```, ```@ask.intent('AMAZON.StopIntent')```, and ```@ask.session_ended decorators```.
+	- They respond to the user's launch request, help request, stop request, and session ended event, respectively.
 
 
 ### 1. AMAZON DEVELOPER CONSOLE:
@@ -185,7 +231,9 @@ Copy paste the [AMAZON_SKILLS.JSON](https://github.com/Stebin-17/Intelligent-Doo
   <img src="https://user-images.githubusercontent.com/114398468/220568727-c1e6d4a0-8475-4c85-979f-74f35509146d.png" />
 </p>
 
-In this JSON file, the intent name chatGPT is responsible for sending the phrase given by the user through AMAZON-ECHO-DOT. It is given a slot value called {question}, which is of type "AMAZON.SearchQuery." So whatever phrase the user sends through this intent, like "Alexa ask the chat, I want to see," the {question} will take the value as the phrase after the invocation name("chat") and sends it to the flask server. In further steps, this question value is used by chatGPT for mapping the phrase to a required target.
+In this Json file there are 2 intent blocks that are crucial for the overall working of this project. The intent block ```facerecognition``` is responsible for getting the json file from the door flask server which is used for capturing the image. The json file send from the cmaera will contain the name value,time slot value and the image file. This alexa skill block will extract the name and time from the html tag and send to the alexa for the  response. If an identified person is at the door alexa will return the statement ```{name} is atthe door and the time is {time}```.
+
+The intent name ```dooropen```  is responsible for sending the phrase given by the user through AMAZON-ECHO-DOT. It is given a slot value called {question}, which is of type "AMAZON.SearchQuery." So whatever phrase the user sends through this intent, like "Alexa ask the device,door to unlock" the {permission} will take the value as the phrase after the invocation name("device") and sends it to the flask server. In further steps, this question value is used by chatGPT for mapping the phrase to a required target.
 
 ### 3. SETTING UP THE RASPBERRY PI: 
 
@@ -226,26 +274,28 @@ pip install cryptography==1.9
 pip install pyopenssl ndg-httpsclient pyasn1
 ```
 
-The flask is installed in the Raspberry pi. Now we have to run the flask server, which will receive requests from the Alexa skills through the endpoint given. The ngrok is working on the same system as the flask server, which will help the local host to be publicly visible and accessible. To run the flask server, open the code in the [link](https://github.com/Stebin-17/AIOT-SMARTER-ALEXA-WITH-CHATGPT/blob/main/FLASK_SERVER_ALEXA.py).
+The flask is installed in the Raspberry pi. Now we have to run the flask server, which will receive requests from the Alexa skills through the endpoint given. The ngrok is working on the same system as the flask server, which will help the local host to be publicly visible and accessible. To run the flask server, open the code in the [link](https://github.com/Stebin-17/Intelligent-Door-Access-System-with-Facial-Recognition-and-Voice-Control/blob/main/Alexa-Skill-Bundle/FLASK_SERVER_ALEXA.py).
  
- The python code has a certain block of code starting with ```@ask.intent('chatgpt',mapping={'user_question':'question'})``` this is the block of code that handles both the chatGPT conversion and MQTT message handling whenever the phrase is reached. The value of the ```question``` is mapped to a variable ```user_question``` in the function.
+ The python code has a certain block of code starting with ```@ask.intent('chatgpt',mapping={'user_question1':'permission'})``` this is the block of code that handles both the chatGPT conversion and MQTT message handling whenever the phrase is reached. The value of the ```permission``` is mapped to a variable ```user_question1``` in the function.
  
  #### **CHATGPT:**
  
- The heart and the core part of this function block is the code that converts the incoming phrase from the user to a particular target ie, either ```Turn on light``` or ```Turn off light```. The code is mentioned below:
+ The heart and the core part of this function block is the code that converts the incoming phrase from the user to a particular target ie, either ```Open door``` or ```Close door```. The code is mentioned below:
  
  ```
  openai.api_key = "sk-t5Zj7TH***********************ZqyW28aWB2lblsS53N"
- chat= "i want to see"
- respond = openai.Completion.create(model="text-davinci-003",
-                                           prompt="Convert \"" + chat + "\" to any one among below commands :\n- Turn off light  \n- Turn on light\n",
-                                           temperature=0,max_tokens=100,
-                                           top_p=1,
-                                           frequency_penalty=0.2,
-                                           presence_penalty=0 )
+ chat= "let him in"
+ response = openai.Completion.create(
+          model="text-davinci-003",
+          prompt="Convert \"" + chat + "\" to any one among below commands :\n- Unlock the door\n- Lock the door \n",
+          temperature=0,
+          max_tokens=100,
+          top_p=1,
+          frequency_penalty=0.2,
+          presence_penalty=0)
  ```
  
- One has to obtain an openai.api_key from the chatGPT API, and the link is given [here](https://www.educative.io/answers/how-to-get-api-key-of-gpt-3). If the phrase from a user is like ```Alexa ask device, I want to see```I want to see part, will be mapped into the ```user_question``` by slot value ```question``` and will be assigned into the ```chat``` variable . This value will go through the code above, and the result will be ```Turn on light``` as the sentiment of the text is more positive.
+ One has to obtain an openai.api_key from the chatGPT API, and the link is given [here](https://www.educative.io/answers/how-to-get-api-key-of-gpt-3). If the phrase from a user is like ```Alexa ask device, door opens```I want to see part, will be mapped into the ```user_question``` by slot value ```question``` and will be assigned into the ```chat``` variable . This value will go through the code above, and the result will be ``` Open Door``` as the sentiment of the text is more positive.
  
 
 ### 6. SETUP THE ALEXA ENDPOINT
@@ -258,6 +308,34 @@ Make the endpoint of Alexa to the webaddress obtained from ngrok. For SSL certif
 
 ### 7. TEST THE SKILLS AND CONNECT TO ECHO DOT:
 Head over to 'test' section of your skill console and start testing your skill. Try saying commands like ```Alexa ask chat to i wanna see```. This should turn on LED light connected to you Raspberry Pi. For attaching the Echo-Dot to  this project refer the steps mentioned in the [link](https://www.theverge.com/2019/11/19/20972973/amazon-echo-alexa-how-to-add-skills-smart-home-games-sounds).
+
+
+### 8.UTTERENCES FOR DOOR OPENING AND CLOSING:
+
+I have tested the below given utterances for opening and closing and it was working fine. More phrases can be possible:
+
+    OPENING THE DOORS:
+	•	Door opens
+	•	Door let him in
+	•	Door opens the latch
+	•	Door unlocks the latch
+	•	Door he is my friend
+	•	Door he is a good guy
+	•	Door I know him
+	
+    CLOSING THE DOORS:
+    
+	•	Door closes
+	•	Door he is a thief
+	•	Door don’t let him
+	•	Door he is harmful/bad
+	•	Door I don’t know him
+	
+
+The command from the alexa is send via MQTT protocol and it is received at the other end by a WIZNET-EVB-PICO boaed which has an servo motor attached too it. Based on the motion of the servo motor the door lock is locked and opened.
+
+
+**3: SERVO MOTOR FOR DOOR MOVEMENT**
 
 
 
