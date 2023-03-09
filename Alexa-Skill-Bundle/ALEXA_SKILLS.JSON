@@ -1,0 +1,103 @@
+{
+        "interactionModel": {
+            "languageModel": {
+                "invocationName": "device",
+                "intents": [
+                    {
+                        "name": "AMAZON.FallbackIntent",
+                        "samples": []
+                    },
+                    {
+                        "name": "AMAZON.CancelIntent",
+                        "samples": [
+                            "exit"
+                        ]
+                    },
+                    {
+                        "name": "AMAZON.HelpIntent",
+                        "samples": []
+                    },
+                    {
+                        "name": "AMAZON.StopIntent",
+                        "samples": [
+                            "stop"
+                        ]
+                    },
+                    {
+                        "name": "AMAZON.NavigateHomeIntent",
+                        "samples": []
+                    },
+                    
+                    {
+                        "name": "AMAZON.YesIntent",
+                        "samples": [
+                            "ok",
+                            "sure",
+                            "yes please",
+                            "yes"
+                        ]
+                    },
+                    {
+                        "name": "AMAZON.NoIntent",
+                        "samples": [
+                            "no thanks",
+                            "no"
+                        ]
+                    },
+                    {
+                        "name": "facerecognition",
+                        "slots": [],
+                        "samples": [
+                            "face who made the call",
+                            "face who is there"
+                        ]
+                    },
+                    {
+                        "name": "dooropen",
+                        "slots": [
+                            {
+                                "name": "permission",
+                                "type": "AMAZON.SearchQuery"
+                            }
+                        ],
+                        "samples": [
+                            "door to {permission}",
+                            "door {permission}"
+                        ]
+                    },
+                    {
+                        "name": "OpenImageIntent",
+                        "slots": [],
+                        "samples": [
+                            "show me the image"
+                        ]
+                    }
+                ],
+                "types": [
+                    {
+                        "name": "STATUS",
+                        "values": [
+                            {
+                                "name": {
+                                    "value": "off",
+                                    "synonyms": [
+                                        "Off",
+                                        "low"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": {
+                                    "value": "on",
+                                    "synonyms": [
+                                        "High",
+                                        "On"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
