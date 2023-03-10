@@ -299,7 +299,7 @@ The flask is installed in the Raspberry pi. Now we have to run the flask server,
           presence_penalty=0)
  ```
  
- One has to obtain an openai.api_key from the chatGPT API, and the link is given [here](https://www.educative.io/answers/how-to-get-api-key-of-gpt-3). If the phrase from a user is like ```Alexa ask device, door opens``` door opens part, will be mapped into the ```user_question``` by slot value ```question``` and will be assigned into the ```chat``` variable . This value will go through the code above, and the result will be ``` Open Door``` as the sentiment of the text is more positive.
+ One has to obtain an openai.api_key from the chatGPT API, and the link is given [here](https://www.educative.io/answers/how-to-get-api-key-of-gpt-3). If the phrase from a user is like ```Alexa ask device, door opens``` door opens part, will be mapped into the ```user_question1``` by slot value ```question``` and will be assigned into the ```chat``` variable . This value will go through the code above, and the result will be ``` Open Door``` as the sentiment of the text is more positive.
  
 
 ### 6. SETUP THE ALEXA ENDPOINT
