@@ -390,7 +390,7 @@ void setup()
 4) The servo motor may require additional power beyond what the Wiznet 5100 Ethernet module can provide, so be sure to power the servo motor separately if necessary. Also, make sure to test your program thoroughly to ensure that it responds correctly to incoming MQTT messages and controls the servo motor as expected.
 
 
-# Circuit Diagram
+<h3> Circuit Diagram </h3>
 
 
 <p align="center">
@@ -398,6 +398,33 @@ void setup()
 </p>
 
 To connect the servo motor to the Wiznet W5100, you will need to connect the wire (usually orange or yellow) of the servo motor to one of the PWM pins on the W5100. You will also need to connect the ground wire (usually brown or black) of the servo motor to the ground pin on the W5100. You can then use a suitable library or code to control the servo motor using the PWM pin. The exact code or library you use will depend on your specific microcontroller or development board, as well as the programming language you are using.
+
+<h2> OUTPUT:
+
+<h2> CONCLUSION:</h2>
+
+The Intelligent Door Access System with Facial Recognition and Voice Control is a highly innovative and advanced project that offers an intelligent and secure solution for access control to homes and buildings. With the integration of facial recognition, voice control, and servo motor, the project provides a comprehensive solution that can accurately identify visitors, communicate with the user, and control the door lock, making the access process efficient and secure. The project's workflow is well-planned and executed, with each component working seamlessly together, providing an excellent user experience. This project is an excellent example of how technology can be leveraged to solve real-world problems, and it has the potential to be a game-changer in the access control industry.
+
+<h2> REFERENCES </h2>
+
+- https://www.hackster.io/innovation4x/webcamserver-arducam-ov2640-module-wiznet-evb-pico-73ceae
+- https://api.telegram.org/bot6031744449:AAFoNG8OKbcDCCT2saMyVj6N5r2WoNnFeMk/getUpdates
+- https://www.geeksforgeeks.org/send-message-to-telegram-user-using-python/
+- https://mqtt.org/
+- https://developer.amazon.com/en-US/docs/alexa/ask-overviews/create-developer-account.html
+- https://www.educative.io/answers/how-to-get-api-key-of-gpt-3
+- https://ngrok.com/download
+- https://www.tomshardware.com/how-to/set-up-raspberry-pi
+- https://www.theverge.com/2019/11/19/20972973/amazon-echo-alexa-how-to-add-skills-smart-home-games-sounds
+- https://circuitmaker.com
+- https://www.hivemq.com/mqtt-essentials/
+- https://howtomechatronics.com/how-it-works/how-servo-motors-work-how-to-control-servos-using-arduino/
+- https://www.youtube.com/watch?v=NqchLYWHCzA&t=452s
+- https://www.instructables.com/A-Simple-MQTT-PubSub-Node-With-Arduino-UNO-and-W51/
+
+
+
+
 
 
 
