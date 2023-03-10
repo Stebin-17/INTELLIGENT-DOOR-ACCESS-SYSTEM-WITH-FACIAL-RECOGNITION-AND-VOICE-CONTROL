@@ -74,6 +74,12 @@ The next phase is the Alexa phase. When the user is inside the house, he can ask
 
 The last part of this project is the servo motor Micro Servo Motor SG90 attached to the door lock. The return message from the Chat GPT is sent via MQTT, and a Wiznet board attached to the motor and the door lock is there to capture the message from the MQTT topic and act according to the message. When the Chat GPT receives a command to open the door, it sends a message to the Wiznet board, which then activates the servo motor to unlock the door. When the Chat GPT receives a command to close the door, it sends a message to the Wiznet board, which then activates the servo motor to lock the door.In conclusion, this project provides a complete solution for secure access control to homes or buildings. The project's workflow is well thought out and detailed, ensuring that all components work together seamlessly to provide a reliable and efficient access control system.
 
+### FLOW CHART 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114398468/224245127-f171d60c-b37b-4c5f-8740-00b6c3c87c0d.png" width="50%" />
+</p>
+
 ## **MAIN COMPONENTS:**
 
 **1. SMART DOOR WITH FACE RECOGNITION**
