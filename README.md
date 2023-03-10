@@ -194,7 +194,7 @@ Explanation of the code:
 	- The ```app``` object is an instance of the Flask class.
 	- The ```ask``` object is an instance of the Ask class and is associated with the app object.
 	- The ```logging``` level is set to DEBUG for the Flask-Ask module.
-	- 
+	
 - Defining Alexa intents:
 
 	- The ```@ask.intent``` decorator is used to define the facerecognition and dooropen intents.
