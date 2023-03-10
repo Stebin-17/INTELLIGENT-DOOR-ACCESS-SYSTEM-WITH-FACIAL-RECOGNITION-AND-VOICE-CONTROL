@@ -77,7 +77,7 @@ The last part of this project is the servo motor Micro Servo Motor SG90 attached
 ### FLOW CHART 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/114398468/224245127-f171d60c-b37b-4c5f-8740-00b6c3c87c0d.png" width="50%" />
+  <img src="https://user-images.githubusercontent.com/114398468/224245127-f171d60c-b37b-4c5f-8740-00b6c3c87c0d.png" width="75%" />
 </p>
 
 ## **MAIN COMPONENTS:**
