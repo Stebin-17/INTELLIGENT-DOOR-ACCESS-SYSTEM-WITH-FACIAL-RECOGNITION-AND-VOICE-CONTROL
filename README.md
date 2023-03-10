@@ -40,9 +40,7 @@ Additionally, the user can also use Alexa to open or close the door. This featur
 - [W5100S-EVB-PICO](https://www.hackster.io/wiznet/products/w5100s-evb-pico1)
 - [JUMPER WIRES](https://www.hackster.io/diyables/products/jumper-wires)
 - [AMAZON ECHO-DOT](https://www.hackster.io/amazon-alexa/products/echo-dot)
-- [LED DOT-MATRIX](https://www.hackster.io/diyables/products/led-matrix-4-in-1-32x8)
 - [ARDUCAM MINI 2MP PLUS](https://www.arducam.com/product/arducam-2mp-spi-camera-b0067-arduino/)
-- [TRIPOD STAND](https://www.amazon.in/AmazonBasics-WT0352G-Lightweight-Mini-Tripod/dp/B00M78G2VO/ref=asc_df_B00M78G2VO/?tag=googleshopdes-21&linkCode=df0&hvadid=396988520763&hvpos=&hvnetw=g&hvrand=2538694165889750999&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1007788&hvtargid=pla-309497986922&psc=1&ext_vrnc=hi)
 - [PUSH BUTTON](https://www.hackster.io/diyables/products/button)
 - [SERVO MOTOR](https://www.hackster.io/diyables/products/servo-motor-sg90-180-degree)
 - [DOOR LOCK](https://www.the-diy-life.com/arduino-based-rfid-door-lock-make-your-own/)
@@ -301,7 +299,7 @@ The flask is installed in the Raspberry pi. Now we have to run the flask server,
           presence_penalty=0)
  ```
  
- One has to obtain an openai.api_key from the chatGPT API, and the link is given [here](https://www.educative.io/answers/how-to-get-api-key-of-gpt-3). If the phrase from a user is like ```Alexa ask device, door opens```I want to see part, will be mapped into the ```user_question``` by slot value ```question``` and will be assigned into the ```chat``` variable . This value will go through the code above, and the result will be ``` Open Door``` as the sentiment of the text is more positive.
+ One has to obtain an openai.api_key from the chatGPT API, and the link is given [here](https://www.educative.io/answers/how-to-get-api-key-of-gpt-3). If the phrase from a user is like ```Alexa ask device, door opens``` door opens part, will be mapped into the ```user_question``` by slot value ```question``` and will be assigned into the ```chat``` variable . This value will go through the code above, and the result will be ``` Open Door``` as the sentiment of the text is more positive.
  
 
 ### 6. SETUP THE ALEXA ENDPOINT
@@ -313,7 +311,7 @@ Make the endpoint of Alexa to the webaddress obtained from ngrok. For SSL certif
 </p>
 
 ### 7. TEST THE SKILLS AND CONNECT TO ECHO DOT:
-Head over to 'test' section of your skill console and start testing your skill. Try saying commands like ```Alexa ask chat to i wanna see```. This should turn on LED light connected to you Raspberry Pi. For attaching the Echo-Dot to  this project refer the steps mentioned in the [link](https://www.theverge.com/2019/11/19/20972973/amazon-echo-alexa-how-to-add-skills-smart-home-games-sounds).
+Head over to 'test' section of your skill console and start testing your skill. Try saying commands like ```Alexa ask device door to opens```. This should open the door(servo motor) connected to the Wiznet-Evb-Pico. For attaching the Echo-Dot to  this project refer the steps mentioned in the [link](https://www.theverge.com/2019/11/19/20972973/amazon-echo-alexa-how-to-add-skills-smart-home-games-sounds).
 
 
 ### 8.UTTERENCES FOR DOOR OPENING AND CLOSING:
