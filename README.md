@@ -403,11 +403,19 @@ void setup()
 
 To connect the servo motor to the Wiznet W5100, you will need to connect the wire (usually orange or yellow) of the servo motor to one of the PWM pins on the W5100. You will also need to connect the ground wire (usually brown or black) of the servo motor to the ground pin on the W5100. You can then use a suitable library or code to control the servo motor using the PWM pin. The exact code or library you use will depend on your specific microcontroller or development board, as well as the programming language you are using.
 
-<h2> OUTPUT:
+#
+
+<h2> OUTPUT: </h2>
+
+The output of the Project has been published in YouTube: [LINK](https://youtu.be/lCQRbIOxoQ0)
+
+#
 
 <h2> CONCLUSION:</h2>
 
 The Intelligent Door Access System with Facial Recognition and Voice Control is a highly innovative and advanced project that offers an intelligent and secure solution for access control to homes and buildings. With the integration of facial recognition, voice control, and servo motor, the project provides a comprehensive solution that can accurately identify visitors, communicate with the user, and control the door lock, making the access process efficient and secure. The project's workflow is well-planned and executed, with each component working seamlessly together, providing an excellent user experience. This project is an excellent example of how technology can be leveraged to solve real-world problems, and it has the potential to be a game-changer in the access control industry.
+
+#
 
 <h2> REFERENCES </h2>
 
@@ -427,7 +435,7 @@ The Intelligent Door Access System with Facial Recognition and Voice Control is 
 - https://www.instructables.com/A-Simple-MQTT-PubSub-Node-With-Arduino-UNO-and-W51/
 
 
-
+#
 
 
 
