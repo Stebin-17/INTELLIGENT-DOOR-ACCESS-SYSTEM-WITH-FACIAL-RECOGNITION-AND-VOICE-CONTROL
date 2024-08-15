@@ -434,7 +434,6 @@ The Intelligent Door Access System with Facial Recognition and Voice Control is 
 - https://www.youtube.com/watch?v=NqchLYWHCzA&t=452s
 - https://www.instructables.com/A-Simple-MQTT-PubSub-Node-With-Arduino-UNO-and-W51/
 
-
 #
 
 
